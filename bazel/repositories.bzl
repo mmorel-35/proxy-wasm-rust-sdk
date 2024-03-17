@@ -31,3 +31,5 @@ def proxy_wasm_rust_sdk_repositories():
         sha256 = "cd55a062e763b9349921f0f5db8c3933288dc8ba4f76dd9416aac68acee3cb94",
         url = "https://github.com/bazelbuild/bazel-skylib/releases/download/1.5.0/bazel-skylib-1.5.0.tar.gz",
     )
+
+proxy_wasm_rust_sdk_repos_ext = module_extension(implementation = lambda x: proxy_wasm_rust_sdk_repositories())
