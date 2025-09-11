@@ -37,7 +37,3 @@ crate.from_cargo(
     manifests = ["//:Cargo.toml"],
 )
 use_repo(crate, "crates")
-
-# Set up compatibility layer for bzlmod mode
-deps = use_extension("//bazel:extensions.bzl", "deps")
-use_repo(deps, "proxy_wasm_rust_sdk_deps")
