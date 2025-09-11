@@ -16,7 +16,31 @@ load("@proxy_wasm_rust_sdk//bazel/cargo/remote:defs.bzl", "crate_repositories")
 load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencies")
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
+def _create_crates_alias_impl(ctx):
+    """Create @crates alias for WORKSPACE mode compatibility."""
+    build_content = """
+package(default_visibility = ["//visibility:public"])
+
+alias(
+    name = "hashbrown",
+    actual = "//bazel/cargo/remote:hashbrown",
+)
+
+alias(
+    name = "log", 
+    actual = "//bazel/cargo/remote:log",
+)
+"""
+    ctx.file("BUILD.bazel", build_content)
+
+_create_crates_alias = repository_rule(
+    implementation = _create_crates_alias_impl,
+)
+
 def proxy_wasm_rust_sdk_dependencies():
     rust_repositories()
     crate_universe_dependencies()
     crate_repositories()
+    
+    # Create @crates alias for WORKSPACE mode compatibility
+    _create_crates_alias(name = "crates")
