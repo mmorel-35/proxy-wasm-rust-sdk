@@ -17,7 +17,11 @@ load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencie
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
 def _create_crates_alias_impl(ctx):
-    """Create @crates alias for WORKSPACE mode compatibility."""
+    """Create @crates alias for WORKSPACE mode compatibility.
+    
+    This creates aliases that point to the vendored crates in //bazel/cargo/remote.
+    The vendored approach provides better compatibility between WORKSPACE and bzlmod modes.
+    """
     build_content = """
 package(default_visibility = ["//visibility:public"])
 
@@ -38,9 +42,15 @@ _create_crates_alias = repository_rule(
 )
 
 def proxy_wasm_rust_sdk_dependencies():
+    """Setup dependencies for proxy-wasm-rust-sdk.
+    
+    Uses vendored crates for better WORKSPACE/bzlmod compatibility.
+    The crates are pre-generated using crates_vendor and stored in //bazel/cargo/remote.
+    """
     rust_repositories()
     crate_universe_dependencies()
     crate_repositories()
     
     # Create @crates alias for WORKSPACE mode compatibility
+    # In bzlmod mode, targets can reference //bazel/cargo/remote:crate_name directly
     _create_crates_alias(name = "crates")
