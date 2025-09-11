@@ -28,7 +28,3 @@ rust.toolchain(
 use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
-
-# Use vendored dependencies for better compatibility and deterministic builds
-# The vendored crates are pre-generated in //bazel/cargo/remote and managed via crates_vendor
-# This approach provides better WORKSPACE/bzlmod compatibility
