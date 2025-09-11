@@ -34,8 +34,8 @@ rust_library(
     visibility = ["//visibility:public"],
     deps = [
         ":proxy_wasm_build_script",
-        "//bazel/cargo/remote:hashbrown",
-        "//bazel/cargo/remote:log",
+        "@crates//:hashbrown",
+        "@crates//:log",
     ],
 )
 
@@ -49,6 +49,6 @@ rust_binary(
     visibility = ["//visibility:private"],
     deps = [
         ":proxy_wasm",
-        "//bazel/cargo/remote:log",
+        "@crates//:log",
     ],
 )
