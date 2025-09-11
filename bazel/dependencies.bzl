@@ -17,11 +17,6 @@ load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencie
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
 def proxy_wasm_rust_sdk_dependencies():
-    """Setup dependencies for proxy-wasm-rust-sdk.
-    
-    Uses vendored crates for better WORKSPACE/bzlmod compatibility.
-    The crates are pre-generated using crates_vendor and stored in //bazel/cargo/remote.
-    """
     rust_repositories()
     crate_universe_dependencies()
     crate_repositories()
