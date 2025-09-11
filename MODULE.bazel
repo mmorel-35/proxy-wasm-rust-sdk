@@ -29,11 +29,6 @@ use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
 
-# Crate universe for Rust dependencies
-crate = use_extension("@rules_rust//crate_universe:extension.bzl", "crate")
-crate.from_cargo(
-    name = "crates",
-    cargo_lockfile = "//bazel/cargo:Cargo.Bazel.lock",
-    manifests = ["//:Cargo.toml"],
-)
-use_repo(crate, "crates")
+# Use vendored dependencies for better compatibility and deterministic builds
+# The vendored crates are pre-generated in //bazel/cargo/remote and managed via crates_vendor
+# This approach provides better WORKSPACE/bzlmod compatibility
