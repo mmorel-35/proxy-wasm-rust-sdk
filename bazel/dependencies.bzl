@@ -23,12 +23,12 @@ package(default_visibility = ["//visibility:public"])
 
 alias(
     name = "hashbrown",
-    actual = "//bazel/cargo/remote:hashbrown",
+    actual = "@proxy_wasm_rust_sdk//bazel/cargo/remote:hashbrown",
 )
 
 alias(
     name = "log", 
-    actual = "//bazel/cargo/remote:log",
+    actual = "@proxy_wasm_rust_sdk//bazel/cargo/remote:log",
 )
 """
     ctx.file("BUILD.bazel", build_content)
