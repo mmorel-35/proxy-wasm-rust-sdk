@@ -1,4 +1,4 @@
-# Disable Bzlmod
+# Enable Bzlmod by default
 common --enable_bzlmod
 
 # Force Bazel to use --target=wasm32-wasip1
