@@ -28,3 +28,15 @@ rust.toolchain(
 use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
+
+crate = use_extension("@rules_rust//crate_universe:extension.bzl", "crate")
+crate.from_cargo(
+    name = "crates",
+    cargo_lockfile = "//bazel/cargo:Cargo.Bazel.lock",
+    manifests = ["//:Cargo.toml"],
+)
+use_repo(crate, "crates")
+
+# Compatibility layer for dependencies
+proxy_wasm_deps = use_extension("//bazel:deps.bzl", "proxy_wasm_deps_ext")
+use_repo(proxy_wasm_deps, "proxy_wasm_rust_sdk_deps")
