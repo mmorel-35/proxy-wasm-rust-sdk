@@ -1,5 +1,6 @@
-# Disable Bzlmod
-common --noenable_bzlmod
+# Enable Bzlmod for modern dependency management
+# To use legacy WORKSPACE instead, add: --noenable_bzlmod
+common --enable_bzlmod
 
 # Force Bazel to use --target=wasm32-wasip1
 build --platforms=@rules_rust//rust/platform:wasi
