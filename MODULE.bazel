@@ -29,4 +29,3 @@ rust.toolchain(edition = "2018")
 use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
-
