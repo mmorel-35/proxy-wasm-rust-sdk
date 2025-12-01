@@ -41,6 +41,13 @@ use_repo(rust, "rust_toolchains")
 
 register_toolchains("@rust_toolchains//:all")
 
+# Register the dummy CC toolchains for wasm targets
+# These are needed because wasm targets require a C++ toolchain but there is no real one available
+register_toolchains(
+    "@rules_rust//rust/private/dummy_cc_toolchain:dummy_cc_wasm32_toolchain",
+    "@rules_rust//rust/private/dummy_cc_toolchain:dummy_cc_wasm64_toolchain",
+)
+
 deps = use_extension("//bazel:extensions.bzl", "crates_vendor")
 use_repo(
     deps,

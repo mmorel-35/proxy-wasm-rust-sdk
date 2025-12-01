@@ -94,7 +94,7 @@
   "moduleExtensions": {
     "//bazel:extensions.bzl%crates_vendor": {
       "general": {
-        "bzlTransitiveDigest": "ZNVv8BPgqfj150ldvFuVhSR8RPLaAtF5NxjhZkdkTSY=",
+        "bzlTransitiveDigest": "IZNYxjOKJR8pEnyro5sfDs3fTnjpLfC4ZqZ/LrSXVsk=",
         "usagesDigest": "jb9H4Wz6rAzVpDm69oTwhpotl21pf6TUU4KYeq2w9cs=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -268,7 +268,7 @@
           [
             "",
             "crates_vendor",
-            "_main~crates_vendor~crates_vendor"
+            "crates_vendor"
           ],
           [
             "",
